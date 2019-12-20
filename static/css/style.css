@@ -1,0 +1,66 @@
+html, body {
+  margin: 0;
+  padding:0;
+  font-family: 'Noto Sans KR', 'Montserrat', sans-serif;
+}
+
+#main-body {
+  background-color: #F8E3E8;
+}
+
+#main-title {
+  font-weight: 900;
+  font-size: 3em;
+  text-align: center;
+  text-shadow: 0 0 2px #666;
+  margin-bottom: 48px;
+}
+
+#speaker-section {
+  position: relative;
+}
+
+#speaker-circle {
+  cursor: pointer;
+  margin: 0 auto;
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  background-color: #EE4A52;
+}
+
+#siri-wave {
+  cursor: pointer;
+  position: absolute;
+  left: 0;
+  top: 30%;
+  display: none;
+  margin: 0 auto;
+  overflow: hidden;
+  padding: 8px;
+}
+@media(min-width: 576px) {
+  #siri-wave {
+    width: 60%;
+    left: 20%;
+  }
+}
+
+#siri-wave > canvas {
+  width: 100%;
+}
+
+#result-mailbox {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  margin: 5% auto;
+  width: 80%;
+  height: 50px;
+  background-color: #FAF2E8;
+}
+
+.msg-icon {
+  width: 32px;
+  margin: 0 8px;
+}
