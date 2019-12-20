@@ -1,11 +1,12 @@
 class View {
+  constructor() {
+    this.view = {
+      "standby-view": "",
+      "overlat-view": ""
+    };
+  }
 
-    constructor() {
-
-    }
-
-    update(viewName, modelData) {
-        console.log("update View");
-    }
-
+  update(viewName, modelData) {
+    console.log("update View");
+  }
 }
