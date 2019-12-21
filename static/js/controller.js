@@ -35,16 +35,16 @@ class Controller {
   OverlayView_StartRecognition() {
     this.model.changeViewModel([{ view: "overlay-view", argc: 0, argv: true }]);
   }
-  OverlayView_StartRecognition() {
+  OverlayView_PlayAndPhuse() {
     this.model.changeViewModel([{ view: "overlay-view", argc: 1, argv: true }]);
   }
-  OverlayView_StartRecognition() {
+  OverlayView_CancleSpeach() {
     this.model.changeViewModel([
       { view: "overlay-view", argc: 0, argv: false },
       { view: "overlay-view", argc: 2, argv: true }
     ]);
   }
-  OverlayView_StartRecognition() {
+  OverlayView_CloseOverlay() {
     this.model.changeViewModel([{ view: "overlay-view", argc: 3 }]);
   }
 }
