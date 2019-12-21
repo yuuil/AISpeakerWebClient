@@ -1,7 +1,8 @@
 class StandbyView {
   constructor() {
     this.speakerCiecle = $("#speaker-circle");
-    this.coreVoice = $(".core-voice");
+    this.coreVoice = $("#standby-core-voice");
+    this.voiceImage = $("#standby-core-img");
     this.mailbox = $("#result-mailbox");
     this.playAndPause = $(".control-icon").first();
     this.reset = $(".control-icon").next();
@@ -51,12 +52,14 @@ class StandbyView {
   startRecognition(show) {
     if (show) {
       console.log("Speaker On");
+      this.voiceImage.addClass("fade-out").removeClass("fade-in");
       this.speakerCiecle.addClass("on");
       this.siri.css({ display: "block" });
       siriWave.start();
       siriWave.setSpeed(0.1);
     } else {
       console.log("Speaker Off");
+      this.voiceImage.addClass("fade-in").removeClass("fade-out");
       this.speakerCiecle.removeClass("on");
       this.siri.css({ display: "none" });
       siriWave.stop();

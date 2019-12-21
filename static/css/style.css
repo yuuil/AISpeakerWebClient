@@ -110,6 +110,16 @@ div {
   pointer-events: none;
 }
 
+.fade-in {
+  animation: fadeIn 0.2s ease-in;
+  opacity: 1 !important;
+}
+
+.fade-out {
+  animation: fadeOut 0.2s ease-in;
+  opacity: 0 !important;
+}
+
 .effect-halo {
   pointer-events: none;
   animation: halo 1.6s infinite linear;
@@ -120,7 +130,7 @@ div {
   animation-delay: 0.8s;
 }
 
-#btn-img {
+.core-btn-img {
   position: absolute;
   width: 50%;
   height: 50%;
