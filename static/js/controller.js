@@ -1,32 +1,24 @@
 class Controller {
   constructor() {}
-  objectLinker(model, stt, gateway) {
+  objectLinker(model, stt, tts, gateway) {
     this.model = model;
     this.sttManager = stt;
+    this.ttsManager = tts;
     this.apiGateway = gateway;
   }
 
   changeModel(arg) {}
-
-  sendQuestion(question) {
-    this.apiGateway.send(question);
-  }
-
-  startListen() {
-    this.sttManager.startListen();
-  }
 
   StandbyView_StartRecognition() {
     let isPressed = model.getModelData("standby-view", 0);
     model.changeViewModel([
       { view: "standby-view", argc: 0, argv: !isPressed }
     ]);
+    if (!isPressed) sttManager.startListen();
   }
   StandbyView_PlayAndPhuse() {
-    let isPressed = model.getModelData("standby-view", 1);
-    model.changeViewModel([
-      { view: "standby-view", argc: 1, argv: !isPressed }
-    ]);
+    let isPlay = model.getModelData("standby-view", 1);
+    model.changeViewModel([{ view: "standby-view", argc: 1, argv: !isPlay }]);
   }
   StandbyView_ResetSpeach() {
     model.changeViewModel([
@@ -52,5 +44,13 @@ class Controller {
   }
   OverlayView_CloseOverlay() {
     model.changeViewModel([{ view: "overlay-view", argc: 3 }]);
+  }
+
+  sendQuestion(question) {
+    this.apiGateway.send(question);
+  }
+
+  startRecognition() {
+    this.sttManager.startListen();
   }
 }

@@ -53,10 +53,9 @@ class Model {
     this.answer = "";
   }
 
-  objectLinker(view, controller, tts) {
+  objectLinker(view, controller) {
     this.view = view;
     this.controller = controller;
-    this.tts = tts;
   }
 
   changeViewModel(chages) {
@@ -81,7 +80,7 @@ class Model {
     this.view.update(this.viewModel);
   }
 
-  getSTT(text) {
+  getText(text) {
     this.question = text;
     let temp = this.viewModel["standby-view"];
     temp.modified = true;
@@ -91,7 +90,8 @@ class Model {
     temp.arg = false;
 
     this.updateView();
-    this.controller.sendQuestion(text);
+    console.log(text);
+    //this.controller.sendQuestion(text);
   }
   receiveResult(result) {
     this.answer = result;
