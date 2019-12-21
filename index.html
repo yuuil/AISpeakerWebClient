@@ -13,23 +13,36 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="static/css/style.css" />
+    <link rel="stylesheet" href="static/css/animation.css" />
   </head>
   <body id="main-body">
     <div id="standby-view">
       <h1 id="main-title">AI Speaker</h1>
       <div id="speaker-section">
+        <div id="speaker-circle">
+          <span class="effect-halo"></span>
+          <span class="effect-halo"></span>
+          <span class="core-voice">
+            <img id="btn-img" src="static/img/cupcake.png" />
+          </span>
+        </div>
         <div id="siri-wave"></div>
-        <div id="speaker-circle"></div>
       </div>
-      <div id="result-mailbox">
-        <img src="static/img/round_mail_black_48dp.png" class="msg-icon" />
-        <p>질문이 입력되지 않았습니다</p>
+      <div id="overlay-view">
+        <div id="icon-section"></div>
       </div>
     </div>
     <div id="overlay-view">
+      <div
+        class="test"
+        style="width: 200px; height: 200px; background-color: #666;"
+      >
+        테스트
+      </div>
       <div id="icon-section"></div>
     </div>
     <script src="https://unpkg.com/siriwave/dist/siriwave.min.js"></script>
     <script src="static/js/siri-wave.js"></script>
+    <script src="static/js/standby-view.js"></script>
   </body>
 </html>
