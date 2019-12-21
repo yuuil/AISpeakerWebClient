@@ -17,10 +17,16 @@ class Controller {
   }
 
   StandbyView_StartRecognition() {
-    model.changeViewModel([{ view: "standby-view", argc: 0, argv: true }]);
+    let isPressed = model.getModelData("standby-view", 0);
+    model.changeViewModel([
+      { view: "standby-view", argc: 0, argv: !isPressed }
+    ]);
   }
   StandbyView_PlayAndPhuse() {
-    model.changeViewModel([{ view: "standby-view", argc: 1, argv: true }]);
+    let isPressed = model.getModelData("standby-view", 1);
+    model.changeViewModel([
+      { view: "standby-view", argc: 1, argv: !isPressed }
+    ]);
   }
   StandbyView_ResetSpeach() {
     model.changeViewModel([

@@ -5,18 +5,22 @@ class Model {
         modified: false,
         data: [
           {
+            name: "voice-core",
             modified: false,
             arg: false
           },
           {
+            name: "play-and-pause",
             modified: false,
             arg: false
           },
           {
+            name: "reset",
             modified: false,
             arg: false
           },
           {
+            name: "open-mailbox",
             modified: false,
             arg: ""
           }
@@ -61,12 +65,16 @@ class Model {
         const element = chages[key];
         this.viewModel[element.view].modified = true;
         this.viewModel[element.view].data[element.argc].modified = true;
-        if (element.argv) {
+        if (element.argv !== undefined) {
           this.viewModel[element.view].data[element.argc].arg = element.argv;
         }
       }
     }
     this.updateView();
+  }
+
+  getModelData(view, argc) {
+    return this.viewModel[view].data[argc].arg;
   }
 
   updateView() {

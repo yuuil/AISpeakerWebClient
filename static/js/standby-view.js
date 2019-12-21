@@ -1,29 +1,13 @@
-$(function() {
-  const overlayView = $("#overlay-view");
-  const resultMailbox = $("#result-mailbox");
-  var overlayOn = false;
-  resultMailbox.click(ClickedResultMailbox);
-
-  function ClickedResultMailbox() {
-    console.log("clicked");
-    if (overlayOn) {
-      overlayOn = false;
-      overlayView.addClass("slide-down").removeClass("slide-up");
-      overlayView.css({ opacity: "0", "pointer-events": "none" });
-    } else {
-      overlayOn = true;
-      overlayView.addClass("slide-up").removeClass("slide-down");
-      overlayView.css({ opacity: "1", "pointer-events": "auto" });
-    }
-  }
-});
-
 class StandbyView {
   constructor() {
+    this.speakerCiecle = $("#speaker-circle");
     this.coreVoice = $(".core-voice");
     this.mailbox = $("#result-mailbox");
     this.playAndPause = $(".control-icon").first();
     this.reset = $(".control-icon").next();
+
+    this.siri = $("#siri-wave");
+    $("#siri-wave > canvas").css({ width: "100%" });
   }
   objectLinker(view) {
     this.view = view;
@@ -41,10 +25,55 @@ class StandbyView {
       if (data.hasOwnProperty(key)) {
         const element = data[key];
         if (element.modified) {
-          console.log(element);
+          this.domUpdater(element.name, element.arg);
           element.modified = false;
         }
       }
+    }
+  }
+
+  domUpdater(name, arg) {
+    switch (name) {
+      case "voice-core":
+        this.startRecognition(arg);
+        break;
+      case "play-and-pause":
+        this.switchPlayAndPause(arg);
+        break;
+      case "reset":
+        break;
+      case "open-mailbox":
+        break;
+      default:
+    }
+  }
+
+  startRecognition(show) {
+    if (show) {
+      console.log("Speaker On");
+      this.speakerCiecle.addClass("on");
+      this.siri.css({ display: "block" });
+      siriWave.start();
+      siriWave.setSpeed(0.1);
+    } else {
+      console.log("Speaker Off");
+      this.speakerCiecle.removeClass("on");
+      this.siri.css({ display: "none" });
+      siriWave.stop();
+    }
+  }
+
+  switchPlayAndPause(pause) {
+    if (pause) {
+      this.playAndPause.attr(
+        "src",
+        "static/img/round_play_circle_outline_white_48dp.png"
+      );
+    } else {
+      this.playAndPause.attr(
+        "src",
+        "static/img/round_pause_circle_outline_white_48dp.png"
+      );
     }
   }
 }
