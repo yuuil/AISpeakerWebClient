@@ -195,6 +195,10 @@ div {
   margin: -35px auto 0;
   border: 5px solid rgb(250, 242, 232);
   overflow: scroll;
+  -ms-overflow-style: none;
+}
+#msgbox::-webkit-scrollbar {
+  display: none;
 }
 
 /* ================ 모바일 ================= */
