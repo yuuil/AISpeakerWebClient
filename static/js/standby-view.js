@@ -1,3 +1,23 @@
+$(function() {
+  const overlayView = $("#overlay-view");
+  const resultMailbox = $("#result-mailbox");
+  var overlayOn = false;
+  resultMailbox.click(ClickedResultMailbox);
+
+  function ClickedResultMailbox() {
+    console.log("clicked");
+    if (overlayOn) {
+      overlayOn = false;
+      overlayView.addClass("slide-down").removeClass("slide-up");
+      overlayView.css({ opacity: "0", "pointer-events": "none" });
+    } else {
+      overlayOn = true;
+      overlayView.addClass("slide-up").removeClass("slide-down");
+      overlayView.css({ opacity: "1", "pointer-events": "auto" });
+    }
+  }
+});
+
 class StandbyView {
   constructor() {
     this.coreVoice = $(".core-voice");
