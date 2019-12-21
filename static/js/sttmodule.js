@@ -2,14 +2,14 @@ class STTManger {
   constructor() {
     this.recognitionAdapter = new STTAdapter(this);
   }
-  linkObjects(model) {
+  objectLinker(model) {
     this.model = model;
   }
   startListen() {
     this.recognitionAdapter.listen();
   }
   getText(result) {
-    return result;
+    this.model.getText(result);
   }
 }
 
@@ -21,7 +21,7 @@ class STTAdapter {
       this.browser = "Chrome";
     } else if (SpeechRecognition) {
       this.recognition = new SpeechRecognition(this);
-      this.browser = "Other Web";
+      this.browser = "Other Web Browser";
     } else {
       this.recognition = undefined;
     }

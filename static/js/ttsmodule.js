@@ -1,6 +1,6 @@
 class TTSModel {
   constructor() {}
-  linkObjects(model) {
+  objectLinker(model) {
     this.model = model;
   }
   startTTS(text) {

@@ -3,7 +3,7 @@ class APIGateway {
     this.serverUrl = "";
     this.serverPort = 0;
   }
-  linkObjects(model) {
+  objectLinker(model) {
     this.model = model;
   }
   send(question) {}

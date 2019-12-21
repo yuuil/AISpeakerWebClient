@@ -1,13 +1,30 @@
 class Controller {
   constructor() {}
-  linkObjects(model) {
+  objectLinker(model, stt, gateway) {
     this.model = model;
+    this.sttManager = stt;
+    this.apiGateway = gateway;
   }
-  changeModel() {}
 
-  standbyView_StartRecognition() {}
-  standbyView_Recognition() {}
-  standbyView_StartRecognition() {}
-  standbyView_StartRecognition() {}
-  standbyView_StartRecognition() {}
+  changeModel(arg) {}
+
+  sendQuestion(question) {
+    this.apiGateway.send(question);
+  }
+
+  startListen() {
+    this.sttManager.startListen();
+  }
+
+  StandbyView_StartRecognition() {}
+  StandbyView_Recognition() {}
+  StandbyView_StartRecognition() {}
+  StandbyView_StartRecognition() {}
+  StandbyView_StartRecognition() {}
+
+  OverlayView_StartRecognition() {}
+  OverlayView_StartRecognition() {}
+  OverlayView_StartRecognition() {}
+  OverlayView_StartRecognition() {}
+  OverlayView_StartRecognition() {}
 }
