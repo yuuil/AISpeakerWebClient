@@ -8,10 +8,12 @@ $(function() {
     console.log("clicked");
     if (overlayOn) {
       overlayOn = false;
-      test.addClass("slide-down").removeClass("slide-up");
+      overlayView.addClass("slide-down").removeClass("slide-up");
+      overlayView.css({"opacity":"0", "pointer-events": "none"});
     } else {
       overlayOn = true;
-      test.addClass("slide-up").removeClass("slide-down");
+      overlayView.addClass("slide-up").removeClass("slide-down");
+      overlayView.css({"opacity":"1", "pointer-events": "auto"});
     }
   }
 });
