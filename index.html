@@ -3,7 +3,6 @@
   <head>
     <meta charset="UTF-8" />
     <title>AI Speaker</title>
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <link
       href="https://fonts.googleapis.com/css?family=Noto+Sans+KR:100,300,400,500,700,900&display=swap"
       rel="stylesheet"
@@ -26,13 +25,18 @@
             <img id="btn-img" src="static/img/cupcake.png" />
           </span>
           <div id="icon-section">
-            <img class="control-icon" src="static/img/round_pause_circle_outline_white_48dp.png">
-            <img class="control-icon" src="static/img/round_loop_white_48dp.png">
+            <img
+              class="control-icon"
+              src="static/img/round_pause_circle_outline_white_48dp.png"
+            />
+            <img
+              class="control-icon"
+              src="static/img/round_loop_white_48dp.png"
+            />
           </div>
         </div>
-        
+
         <div id="siri-wave"></div>
-        
       </div>
       <div id="result-mailbox">
         <img src="static/img/round_mail_black_48dp.png" class="msg-icon" />
@@ -40,12 +44,22 @@
       </div>
     </div>
     <div id="overlay-view">
-      <div class="test" style="width: 200px; height: 200px; background-color: #666;">
+      <div
+        class="test"
+        style="width: 200px; height: 200px; background-color: #666;"
+      >
         테스트
       </div>
     </div>
     <script src="https://unpkg.com/siriwave/dist/siriwave.min.js"></script>
     <script src="static/js/siri-wave.js"></script>
     <script src="static/js/standby-view.js"></script>
+    <script src="static/js/apigateway.js"></script>
+    <script src="static/js/controller.js"></script>
+    <script src="static/js/model.js"></script>
+    <script src="static/js/overlay-view.js"></script>
+    <script src="static/js/sttmodule.js"></script>
+    <script src="static/js/ttsmodule.js"></script>
+    <script src="static/js/view.js"></script>
   </body>
 </html>
