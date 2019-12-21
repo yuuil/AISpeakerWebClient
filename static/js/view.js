@@ -3,9 +3,10 @@ class View {
     this.view = {};
   }
 
-  objectLinker(standby, overlay) {
-    this.view["standby-view"] = standby;
-    this.view["overlat-view"] = overlay;
+  objectLinker(controller, views) {
+    this.controller = controller;
+    this.view["standby-view"] = views[0];
+    this.view["overlat-view"] = views[1];
   }
 
   update(viewModel) {

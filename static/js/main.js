@@ -10,7 +10,7 @@ $(document).ready(function() {
 
   model.objectLinker(view, controller, ttsManager);
   controller.objectLinker(model, sttManager, apiGateway);
-  view.objectLinker(stanby, overlay);
+  view.objectLinker(controller, [stanby, overlay]);
   sttManager.objectLinker(model);
   ttsManager.objectLinker(model);
 });
