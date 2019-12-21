@@ -17,34 +17,40 @@ class Controller {
   }
 
   StandbyView_StartRecognition() {
-    this.model.changeViewModel([{ view: "standby-view", argc: 0, argv: true }]);
+    let isPressed = model.getModelData("standby-view", 0);
+    model.changeViewModel([
+      { view: "standby-view", argc: 0, argv: !isPressed }
+    ]);
   }
   StandbyView_PlayAndPhuse() {
-    this.model.changeViewModel([{ view: "standby-view", argc: 1, argv: true }]);
+    let isPressed = model.getModelData("standby-view", 1);
+    model.changeViewModel([
+      { view: "standby-view", argc: 1, argv: !isPressed }
+    ]);
   }
   StandbyView_ResetSpeach() {
-    this.model.changeViewModel([
+    model.changeViewModel([
       { view: "standby-view", argc: 0, argv: false },
       { view: "standby-view", argc: 2, argv: true }
     ]);
   }
   StandbyView_ShowOverlay() {
-    this.model.changeViewModel([{ view: "standby-view", argc: 3 }]);
+    model.changeViewModel([{ view: "standby-view", argc: 3 }]);
   }
 
   OverlayView_StartRecognition() {
-    this.model.changeViewModel([{ view: "overlay-view", argc: 0, argv: true }]);
+    model.changeViewModel([{ view: "overlay-view", argc: 0, argv: true }]);
   }
   OverlayView_PlayAndPhuse() {
-    this.model.changeViewModel([{ view: "overlay-view", argc: 1, argv: true }]);
+    model.changeViewModel([{ view: "overlay-view", argc: 1, argv: true }]);
   }
   OverlayView_CancleSpeach() {
-    this.model.changeViewModel([
+    model.changeViewModel([
       { view: "overlay-view", argc: 0, argv: false },
       { view: "overlay-view", argc: 2, argv: true }
     ]);
   }
   OverlayView_CloseOverlay() {
-    this.model.changeViewModel([{ view: "overlay-view", argc: 3 }]);
+    model.changeViewModel([{ view: "overlay-view", argc: 3 }]);
   }
 }
