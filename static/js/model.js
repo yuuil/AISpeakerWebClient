@@ -60,8 +60,9 @@ class Model {
       if (chages.hasOwnProperty(key)) {
         const element = chages[key];
         this.viewModel[element.view].modified = true;
+        this.viewModel[element.view].data[element.argc].modified = true;
         if (element.argv) {
-          this.viewModel[element.view].date[element.argc] = element.argv;
+          this.viewModel[element.view].data[element.argc].arg = element.argv;
         }
       }
     }
