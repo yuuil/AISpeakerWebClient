@@ -19,7 +19,7 @@ class Model {
           arg: "NO DATA"
         }
       ],
-      "overlat-view": [
+      "overlay-view": [
         {
           modified: false,
           arg: false
@@ -40,7 +40,9 @@ class Model {
     };
     this.view = "";
   }
-
+  linkObjects(model) {
+    this.model = model;
+  }
   updateView() {}
   getSTT() {}
   receiveResult() {}

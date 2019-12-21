@@ -1,29 +1,35 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <meta charset="UTF-8">
-  <title>AI Speaker</title>
-  <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-  <link href="https://fonts.googleapis.com/css?family=Noto+Sans+KR:100,300,400,500,700,900&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css?family=Montserrat:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="static/css/style.css">
-</head>
-<body id="main-body">
-  <div id="standby-view">
-    <h1 id="main-title">AI Speaker</h1>
-    <div id="speaker-section">
-      <div id="siri-wave"></div>
-      <div id="speaker-circle"></div>
+  <head>
+    <meta charset="UTF-8" />
+    <title>AI Speaker</title>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <link
+      href="https://fonts.googleapis.com/css?family=Noto+Sans+KR:100,300,400,500,700,900&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Montserrat:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="static/css/style.css" />
+  </head>
+  <body id="main-body">
+    <div id="standby-view">
+      <h1 id="main-title">AI Speaker</h1>
+      <div id="speaker-section">
+        <div id="siri-wave"></div>
+        <div id="speaker-circle"></div>
+      </div>
+      <div id="result-mailbox">
+        <img src="static/img/round_mail_black_48dp.png" class="msg-icon" />
+        <p>질문이 입력되지 않았습니다</p>
+      </div>
     </div>
-    <div id="result-mailbox">
-      <img src="static/img/round_mail_black_48dp.png" class="msg-icon">
-      <p>질문이 입력되지 않았습니다</p>
+    <div id="overlay-view">
+      <div id="icon-section"></div>
     </div>
-  </div>
-  <div id="overlay-view">
-    <div id="icon-section"></div>
-  </div>
-  <script src="https://unpkg.com/siriwave/dist/siriwave.min.js"></script>
-  <script src="static/js/siri-wave.js"></script>
-</body>
+    <script src="https://unpkg.com/siriwave/dist/siriwave.min.js"></script>
+    <script src="static/js/siri-wave.js"></script>
+  </body>
 </html>
