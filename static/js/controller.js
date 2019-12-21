@@ -16,15 +16,35 @@ class Controller {
     this.sttManager.startListen();
   }
 
-  StandbyView_StartRecognition() {}
-  StandbyView_Recognition() {}
-  StandbyView_StartRecognition() {}
-  StandbyView_StartRecognition() {}
-  StandbyView_StartRecognition() {}
+  StandbyView_StartRecognition() {
+    this.model.changeViewModel([{ view: "standby-view", argc: 0, argv: true }]);
+  }
+  StandbyView_PlayAndPhuse() {
+    this.model.changeViewModel([{ view: "standby-view", argc: 1, argv: true }]);
+  }
+  StandbyView_CancleSpeach() {
+    this.model.changeViewModel([
+      { view: "standby-view", argc: 0, argv: false },
+      { view: "standby-view", argc: 2, argv: true }
+    ]);
+  }
+  StandbyView_ShowOverlay() {
+    this.model.changeViewModel([{ view: "standby-view", argc: 3 }]);
+  }
 
-  OverlayView_StartRecognition() {}
-  OverlayView_StartRecognition() {}
-  OverlayView_StartRecognition() {}
-  OverlayView_StartRecognition() {}
-  OverlayView_StartRecognition() {}
+  OverlayView_StartRecognition() {
+    this.model.changeViewModel([{ view: "overlay-view", argc: 0, argv: true }]);
+  }
+  OverlayView_StartRecognition() {
+    this.model.changeViewModel([{ view: "overlay-view", argc: 1, argv: true }]);
+  }
+  OverlayView_StartRecognition() {
+    this.model.changeViewModel([
+      { view: "overlay-view", argc: 0, argv: false },
+      { view: "overlay-view", argc: 2, argv: true }
+    ]);
+  }
+  OverlayView_StartRecognition() {
+    this.model.changeViewModel([{ view: "overlay-view", argc: 3 }]);
+  }
 }

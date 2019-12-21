@@ -18,7 +18,7 @@ class Model {
           },
           {
             modified: false,
-            arg: "NO DATA"
+            arg: ""
           }
         ]
       },
@@ -39,20 +39,33 @@ class Model {
           },
           {
             modified: false,
-            arg: "NO DATA"
+            arg: ""
           }
         ]
       }
     };
 
     this.question = "";
-    this.result = "";
+    this.answer = "";
   }
 
   objectLinker(view, controller, tts) {
     this.view = view;
     this.controller = controller;
     this.tts = tts;
+  }
+
+  changeViewModel(chages) {
+    for (const key in chages) {
+      if (chages.hasOwnProperty(key)) {
+        const element = chages[key];
+        this.viewModel[element.view].modified = true;
+        if (element.argv) {
+          this.viewModel[element.view].date[element.argc] = element.argv;
+        }
+      }
+    }
+    this.updateView();
   }
 
   updateView() {
@@ -64,9 +77,14 @@ class Model {
     this.controller.sendQuestion(text);
   }
   receiveResult(result) {
-    this.anser = result;
-    let temp = this.viewModel["overlay-view"].data[3];
+    this.answer = result;
+    let temp = this.viewModel["overlay-view"];
+    temp.modified = true;
+
+    temp = temp.data[3];
     temp.modified = true;
     temp.arg = result;
+
+    updateView();
   }
 }

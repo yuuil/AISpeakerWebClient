@@ -4,6 +4,11 @@ class STTManger {
   }
   objectLinker(model) {
     this.model = model;
+
+    let rec = this.recognitionAdapter.recognitionOnLoad();
+    if (rec === undefined) {
+      alert("크롬 브라우저에서만 실행 가능합니다");
+    }
   }
   startListen() {
     this.recognitionAdapter.listen();
