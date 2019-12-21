@@ -11,7 +11,7 @@ $(document).ready(function() {
   model = new Model();
   view = new View();
   controller = new Controller();
-  stanby;
+  stanby = new StandbyView();
   overlay;
   sttManager = new STTManger();
   ttsManager = new TTSModel();
@@ -22,6 +22,8 @@ $(document).ready(function() {
   view.objectLinker(controller, [stanby, overlay]);
   sttManager.objectLinker(model);
   ttsManager.objectLinker(model);
+
+  stanby.objectLinker(view);
 });
 
 console.log("READY");

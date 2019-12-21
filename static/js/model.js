@@ -75,6 +75,14 @@ class Model {
 
   getSTT(text) {
     this.question = text;
+    let temp = this.viewModel["standby-view"];
+    temp.modified = true;
+
+    temp = temp.data[0];
+    temp.modified = true;
+    temp.arg = false;
+
+    this.updateView();
     this.controller.sendQuestion(text);
   }
   receiveResult(result) {
