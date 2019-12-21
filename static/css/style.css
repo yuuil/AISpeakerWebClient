@@ -148,6 +148,45 @@ html, body {
   pointer-events: none;
 }
 
+#overlay-modal {
+  position: relative;
+  background-color: #fff;
+  margin: 5vh auto;
+  padding: 40px 8px 20px;
+  width: 640px;
+  height: 85vh;
+  border-radius: 8px;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+#overlay-modal #speaker-circle {
+  width: 80px;
+  height: 80px;
+}
+
+#overlay-modal .control-icon {
+  width: 32px;
+  filter: drop-shadow(1px 1px 3px rgba(213, 92, 90, 0.75));
+}
+
+#overlay-modal .control-icon:nth-of-type(1) {
+  top: 30px;
+  left: -50px;
+}
+
+#overlay-modal .control-icon:nth-of-type(2) {
+  top: 30px;
+  right: -50px;
+}
+
+#msgbox {
+  width: 600px;
+  height: 75vh;
+  margin: -35px auto 0;
+  border: 5px solid rgb(250, 242, 232);
+  overflow: scroll;
+}
+
 /* ================ 모바일 ================= */
 @media(max-width: 600px) {
   body {
@@ -173,5 +212,9 @@ html, body {
 
   #siri-wave {
     display: none;
+  }
+
+  #overlay-modal {
+    width: 90%;
   }
 }
