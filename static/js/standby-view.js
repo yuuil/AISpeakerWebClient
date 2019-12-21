@@ -42,8 +42,10 @@ class StandbyView {
         this.switchPlayAndPause(arg);
         break;
       case "reset":
+        this.pressResetButton();
         break;
       case "open-mailbox":
+        this.pressMailbox();
         break;
       default:
     }
@@ -68,15 +70,33 @@ class StandbyView {
 
   switchPlayAndPause(pause) {
     if (pause) {
-      this.playAndPause.attr(
-        "src",
-        "static/img/round_play_circle_outline_white_48dp.png"
-      );
+      this.playAndPause
+        .attr("src", "static/img/round_play_circle_outline_white_48dp.png")
+        .addClass("press-button");
+      setTimeout(() => {
+        this.playAndPause.removeClass("press-button");
+      }, 210);
     } else {
-      this.playAndPause.attr(
-        "src",
-        "static/img/round_pause_circle_outline_white_48dp.png"
-      );
+      this.playAndPause
+        .attr("src", "static/img/round_pause_circle_outline_white_48dp.png")
+        .addClass("press-button");
+      setTimeout(() => {
+        this.playAndPause.removeClass("press-button");
+      }, 210);
     }
+  }
+
+  pressResetButton() {
+    this.reset.addClass("press-button rotate-button");
+    setTimeout(() => {
+      this.reset.removeClass("press-button rotate-button");
+    }, 210);
+  }
+
+  pressMailbox() {
+    this.mailbox.addClass("press-button");
+    setTimeout(() => {
+      this.mailbox.removeClass("press-button");
+    }, 210);
   }
 }

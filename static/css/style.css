@@ -156,6 +156,20 @@ div {
   right: 2vh;
 }
 
+.animation-dom {
+  transition-duration: 0.2s;
+  transition-timing-function: ease-in-out;
+}
+
+.press-button {
+  opacity: 0.35 !important;
+  pointer-events: none !important;
+}
+
+.rotate-button {
+  transform: rotate(-60deg);
+}
+
 #overlay-view {
   position: absolute;
   top: 0;

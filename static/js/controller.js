@@ -15,6 +15,7 @@ class Controller {
       { view: "standby-view", argc: 0, argv: !isPressed }
     ]);
     if (!isPressed) sttManager.startListen();
+    else sttManager.stopListen();
   }
   StandbyView_PlayAndPhuse() {
     let isPlay = model.getModelData("standby-view", 1);
@@ -25,6 +26,11 @@ class Controller {
       { view: "standby-view", argc: 0, argv: false },
       { view: "standby-view", argc: 2, argv: true }
     ]);
+    sttManager.stopListen();
+    setTimeout(() => {
+      model.changeViewModel([{ view: "standby-view", argc: 0, argv: true }]);
+      sttManager.startListen();
+    }, 500);
   }
   StandbyView_ShowOverlay() {
     model.changeViewModel([{ view: "standby-view", argc: 3 }]);
