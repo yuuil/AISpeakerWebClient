@@ -12,7 +12,7 @@ class Model {
           {
             name: "play-and-pause",
             modified: false,
-            arg: false
+            arg: true
           },
           {
             name: "reset",
@@ -51,6 +51,8 @@ class Model {
 
     this.question = "";
     this.answer = "";
+    this.message =
+      "AI 스피커 딸기머핀입니다!\n머핀을 누르고 말씀해주세요\n주식, 날씨, 뉴스, 성경에 대해 질문하시면 됩니다!";
   }
 
   objectLinker(view, controller) {
@@ -76,6 +78,10 @@ class Model {
     return this.viewModel[view].data[argc].arg;
   }
 
+  getPreviousMessage() {
+    return this.message;
+  }
+
   updateView() {
     this.view.update(this.viewModel);
   }
@@ -90,18 +96,27 @@ class Model {
     temp.arg = false;
 
     this.updateView();
-    console.log(text);
-    //this.controller.sendQuestion(text);
+    console.log("get text from stt : " + text);
+    this.controller.sendQuestion(text);
   }
   receiveResult(result) {
-    this.answer = result;
-    let temp = this.viewModel["overlay-view"];
-    temp.modified = true;
+    // this.answer = result;
+    // let temp = this.viewModel["overlay-view"];
+    // temp.modified = true;
 
-    temp = temp.data[3];
-    temp.modified = true;
-    temp.arg = result;
+    // temp = temp.data[3];
+    // temp.modified = true;
+    // temp.arg = result;
 
-    updateView();
+    let mailbox = this.viewModel["standby-view"];
+    mailbox.modified = true;
+
+    mailbox = mailbox.data[3];
+    mailbox.modified = true;
+    mailbox.arg = this.question;
+
+    console.log("receive data form server : " + result);
+
+    this.updateView();
   }
 }

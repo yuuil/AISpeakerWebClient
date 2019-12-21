@@ -45,7 +45,7 @@ class StandbyView {
         this.pressResetButton();
         break;
       case "open-mailbox":
-        this.pressMailbox();
+        this.pressMailbox(arg);
         break;
       default:
     }
@@ -93,8 +93,9 @@ class StandbyView {
     }, 210);
   }
 
-  pressMailbox() {
+  pressMailbox(arg) {
     this.mailbox.addClass("press-button");
+    this.mailbox.children("p").text(arg);
     setTimeout(() => {
       this.mailbox.removeClass("press-button");
     }, 210);

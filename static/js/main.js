@@ -35,8 +35,11 @@ $(document).ready(function() {
   model.objectLinker(view, controller);
   controller.objectLinker(model, sttManager, ttsManager, apiGateway);
   view.objectLinker(controller, [stanby, overlay]);
+  apiGateway.objectLinker(model);
   sttManager.objectLinker(model);
-  ttsManager.objectLinker(model);
+  ttsManager.objectLinker(controller);
 
   stanby.objectLinker(view);
+
+  //controller.ReadFirstTimeOnLoad();
 });

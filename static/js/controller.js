@@ -7,8 +7,6 @@ class Controller {
     this.apiGateway = gateway;
   }
 
-  changeModel(arg) {}
-
   StandbyView_StartRecognition() {
     let isPressed = model.getModelData("standby-view", 0);
     model.changeViewModel([
@@ -18,9 +16,12 @@ class Controller {
     else sttManager.stopListen();
   }
   StandbyView_PlayAndPhuse() {
-    let isPlay = model.getModelData("standby-view", 1);
-    model.changeViewModel([{ view: "standby-view", argc: 1, argv: !isPlay }]);
+    let isPause = model.getModelData("standby-view", 1);
+    model.changeViewModel([{ view: "standby-view", argc: 1, argv: !isPause }]);
+    if (!isPause) ttsManager.pauseTTS();
+    else ttsManager.startTTS(model.getPreviousMessage());
   }
+
   StandbyView_ResetSpeach() {
     model.changeViewModel([
       { view: "standby-view", argc: 0, argv: false },
@@ -58,5 +59,19 @@ class Controller {
 
   startRecognition() {
     this.sttManager.startListen();
+  }
+
+  speachEnd() {
+    this.StandbyView_PlayAndPhuse();
+  }
+
+  JustTogglePlayAndPhuse() {
+    let isPause = model.getModelData("standby-view", 1);
+    model.changeViewModel([{ view: "standby-view", argc: 1, argv: !isPause }]);
+  }
+
+  ReadFirstTimeOnLoad() {
+    this.ttsManager.pauseTTS();
+    this.StandbyView_PlayAndPhuse();
   }
 }

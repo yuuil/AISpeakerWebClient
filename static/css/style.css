@@ -87,6 +87,7 @@ div {
   display: flex;
   align-items: center;
   text-align: center;
+  overflow: hidden;
   margin: 20vh auto 0;
   width: 500px;
   height: 50px;

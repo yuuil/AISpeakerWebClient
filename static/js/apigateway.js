@@ -6,6 +6,8 @@ class APIGateway {
   objectLinker(model) {
     this.model = model;
   }
-  send(question) {}
+  send(question) {
+    this.model.receiveResult(question);
+  }
   receive() {}
 }
