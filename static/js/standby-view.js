@@ -2,8 +2,10 @@ $(function() {
   const overlayView = $("#overlay-view");
   const resultMailbox = $("#result-mailbox");
   const test = $(".test");
-  let overlayOn = false;
-  resultMailbox.click(function() {
+  var overlayOn = false;
+  resultMailbox.click(ClickedResultMailbox);
+
+  function ClickedResultMailbox() {
     console.log("clicked");
     if(overlayOn) {
       overlayOn = false;
@@ -12,5 +14,5 @@ $(function() {
       overlayOn = true;
       test.addClass("slide-up").removeClass("slide-down");
     }
-  })
+  }
 })
