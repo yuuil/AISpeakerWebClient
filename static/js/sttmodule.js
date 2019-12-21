@@ -14,6 +14,7 @@ class STTManger {
     this.recognitionAdapter.listen();
   }
   getText(result) {
+    console.log("get Text : " + result);
     this.model.getText(result);
   }
 }
@@ -42,7 +43,8 @@ class STTAdapter {
     this.recognition.start();
   }
   end(result) {
-    this.manager.getText(result);
+    console.log("mic end " + result);
+    this.sttManager.getText(result);
   }
 }
 
@@ -52,6 +54,8 @@ class ChromeRecognition {
     this.recognition = new webkitSpeechRecognition();
     this.recognition.lang = "ko-KR";
     this.recognition.interimResults = false;
+
+    this.setEvent();
   }
   setEvent() {
     this.recognition.onresult = event => {
@@ -59,7 +63,7 @@ class ChromeRecognition {
       this.adapter.end(speechResult);
     };
     this.recognition.onspeechend = () => {
-      recognition.stop();
+      this.recognition.stop();
     };
   }
   start() {

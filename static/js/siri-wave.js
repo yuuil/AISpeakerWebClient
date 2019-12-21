@@ -1,21 +1,3 @@
-const siriWave = new SiriWave({
-  container: document.getElementById("siri-wave"),
-  width: 800,
-  height: 120,
-  style: "ios9",
-  autostart: true,
-  amplitude: 0
-});
-
-function randomAmplitude() {
-  const value = 2;
-
-  siriWave.setAmplitude(value);
-  requestAnimationFrame(randomAmplitude);
-}
-
-randomAmplitude();
-
 $(function() {
   //SiriWave는 이미 만들어진 클래스이기 때문에 너비를 임의로 제어하기 위해 onload 이벤트 사용.
   // const siri = $("#siri-wave > canvas");
