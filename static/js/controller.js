@@ -22,7 +22,7 @@ class Controller {
   StandbyView_PlayAndPhuse() {
     this.model.changeViewModel([{ view: "standby-view", argc: 1, argv: true }]);
   }
-  StandbyView_CancleSpeach() {
+  StandbyView_ResetSpeach() {
     this.model.changeViewModel([
       { view: "standby-view", argc: 0, argv: false },
       { view: "standby-view", argc: 2, argv: true }
