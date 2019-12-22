@@ -90,19 +90,18 @@ class Model {
 
   getText(text) {
     this.question = text;
+    this.controller.sendQuestion(text);
+    console.log("get text from stt : " + text);
+  }
+
+  updateSpeechAnimation() {
     let temp = this.viewModel["standby-view"];
     temp.modified = true;
-
     temp = temp.data[0];
     temp.modified = true;
     temp.arg = false;
-
     this.updateView();
-    console.log("get text from stt : " + text);
-    this.controller.sendQuestion(text);
   }
-
-  stopSpeechAnimation() {}
   receiveResult(result) {
     // this.answer = result;
     // let temp = this.viewModel["overlay-view"];
