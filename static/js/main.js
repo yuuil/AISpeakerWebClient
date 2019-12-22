@@ -1,26 +1,11 @@
-const siriWave = new SiriWave({
-  container: document.getElementById("siri-wave"),
-  width: 800,
-  height: 120,
-  style: "ios9",
-  autostart: true,
-  amplitude: 0
-});
-function randomAmplitude() {
-  const value = 2;
-  siriWave.setAmplitude(value);
-  requestAnimationFrame(randomAmplitude);
-}
-randomAmplitude();
-
-let model;
-let view;
-let controller;
-let stanby;
-let overlay;
-let sttManager;
-let ttsManager;
-let apiGateway;
+var model;
+var view;
+var controller;
+var stanby;
+var overlay;
+var sttManager;
+var ttsManager;
+var apiGateway;
 
 $(document).ready(function() {
   model = new Model();
@@ -43,3 +28,18 @@ $(document).ready(function() {
 
   //controller.ReadFirstTimeOnLoad();
 });
+
+const siriWave = new SiriWave({
+  container: document.getElementById("siri-wave"),
+  width: 800,
+  height: 120,
+  style: "ios9",
+  autostart: true,
+  amplitude: 0
+});
+function randomAmplitude() {
+  const value = 2;
+  siriWave.setAmplitude(value);
+  requestAnimationFrame(randomAmplitude);
+}
+randomAmplitude();

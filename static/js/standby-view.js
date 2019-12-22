@@ -4,6 +4,9 @@ class StandbyView {
     this.coreVoice = $("#standby-core-voice");
     this.voiceImage = $("#standby-core-img");
     this.mailbox = $("#result-mailbox");
+    this.haloEffect = $(
+      "#standby-view > #speaker-section > #speaker-circle > .effect-halo"
+    );
     this.playAndPause = $(".control-icon").first();
     this.reset = $(".control-icon").next();
 
@@ -54,6 +57,9 @@ class StandbyView {
   startRecognition(show) {
     if (show) {
       console.log("Speaker On");
+      this.haloEffect
+        .addClass("effect-halo-runnig")
+        .removeClass("effect-halo-blink");
       this.voiceImage.addClass("fade-out").removeClass("fade-in");
       this.speakerCiecle.addClass("on");
       this.siri.css({ display: "block" });
@@ -61,6 +67,9 @@ class StandbyView {
       siriWave.setSpeed(0.1);
     } else {
       console.log("Speaker Off");
+      this.haloEffect
+        .addClass("effect-halo-blink")
+        .removeClass("effect-halo-runnig");
       this.voiceImage.addClass("fade-in").removeClass("fade-out");
       this.speakerCiecle.removeClass("on");
       this.siri.css({ display: "none" });
