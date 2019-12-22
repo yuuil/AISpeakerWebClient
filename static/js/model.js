@@ -22,7 +22,7 @@ class Model {
           {
             name: "open-mailbox",
             modified: false,
-            arg: ""
+            arg: "질문을 말씀해주세요"
           }
         ]
       },
