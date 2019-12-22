@@ -18,7 +18,11 @@ class STTManger {
   }
   getText(result) {
     console.log("get Text : " + result);
-    this.model.getText(result);
+    model.getText(result);
+  }
+  update() {
+    console.log("updte");
+    this.model.updateSpeechAnimation();
   }
 }
 
@@ -48,6 +52,9 @@ class STTAdapter {
   stop() {
     this.recognition.stop();
   }
+  update() {
+    sttManager.update();
+  }
   end(result) {
     console.log("mic end " + result);
     this.sttManager.getText(result);
@@ -75,6 +82,7 @@ class ChromeRecognition {
     };
     this.recognition.onend = event => {
       console.log(event);
+      this.adapter.update();
     };
   }
   start() {
@@ -102,6 +110,10 @@ class SpeechRecognition {
     this.recognition.onspeechend = () => {
       recognition.stop();
       console.log("rec stop");
+    };
+    this.recognition.onend = event => {
+      console.log(event);
+      this.adapter.update();
     };
   }
   start() {
