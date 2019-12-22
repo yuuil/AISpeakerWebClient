@@ -22,10 +22,20 @@ div {
 
 #main-title {
   font-weight: 900;
-  font-size: 3em;
+  font-size: 6em;
   text-align: center;
   text-shadow: 0 0 2px #666;
-  margin-bottom: 48px;
+  margin: 48px 0 0 0;
+  line-height: 1;
+}
+
+#sub-title {
+  font-weight: 600;
+  font-size: 2.75em;
+  text-align: center;
+  text-shadow: 0 0 2px #666;
+  color: #525252;
+  margin-bottom: 60px;
 }
 
 #speaker-section {
@@ -121,12 +131,12 @@ div {
   opacity: 0 !important;
 }
 
-.effect-halo {
+.effect-halo-runnig {
   pointer-events: none;
   animation: halo 1.6s infinite linear;
 }
 
-#speaker-circle .effect-halo:nth-of-type(2) {
+#speaker-circle .effect-halo-runnig:nth-of-type(2) {
   opacity: 0;
   animation-delay: 0.8s;
 }
@@ -234,6 +244,12 @@ div {
   }
 
   #main-title {
+    box-sizing: border-box;
+    height: 15vh;
+    margin-bottom: 5vh;
+  }
+
+  #sub-title {
     box-sizing: border-box;
     height: 15vh;
     margin-bottom: 5vh;

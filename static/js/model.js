@@ -52,7 +52,7 @@ class Model {
     this.question = "";
     this.answer = "";
     this.message =
-      "AI 스피커 딸기머핀입니다!\n머핀을 누르고 말씀해주세요\n주식, 날씨, 뉴스, 성경에 대해 질문하시면 됩니다!";
+      "AI 스피커 !아이쿠! 입니다!\n머핀을 누르고 말씀해주세요\n주식, 날씨, 뉴스, 성경에 대해 질문하시면 됩니다!";
   }
 
   objectLinker(view, controller) {

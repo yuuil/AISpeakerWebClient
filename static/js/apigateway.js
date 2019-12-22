@@ -7,7 +7,9 @@ class APIGateway {
     this.model = model;
   }
   send(question) {
+    this.receive();
+  }
+  receive() {
     this.model.receiveResult(question);
   }
-  receive() {}
 }
