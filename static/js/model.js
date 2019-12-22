@@ -7,22 +7,22 @@ class Model {
           {
             name: "voice-core",
             modified: false,
-            arg: false
+            arg: { show: false }
           },
           {
             name: "play-and-pause",
             modified: false,
-            arg: true
+            arg: { show: true }
           },
           {
             name: "reset",
             modified: false,
-            arg: false
+            arg: { show: false }
           },
           {
             name: "open-mailbox",
             modified: false,
-            arg: "질문을 말씀해주세요"
+            arg: { show: true, update: false, data: "질문을 말씀해주세요" }
           }
         ]
       },
@@ -30,25 +30,34 @@ class Model {
         modified: false,
         data: [
           {
+            name: "voice-core",
             modified: false,
-            arg: false
+            arg: { show: false }
           },
           {
+            name: "play-and-pause",
             modified: false,
-            arg: false
+            arg: { show: true }
           },
           {
+            name: "reset",
             modified: false,
-            arg: false
+            arg: { show: false }
           },
           {
+            name: "overlay",
             modified: false,
-            arg: ""
+            arg: {
+              show: false,
+              update: false,
+              data: "질문을 말씀해주세요"
+            }
           }
         ]
       }
     };
 
+    this.thisView = "standby-view";
     this.question = "";
     this.answer = "";
     this.message =
@@ -67,7 +76,9 @@ class Model {
         this.viewModel[element.view].modified = true;
         this.viewModel[element.view].data[element.argc].modified = true;
         if (element.argv !== undefined) {
-          this.viewModel[element.view].data[element.argc].arg = element.argv;
+          this.viewModel[element.view].data[element.argc].arg = {
+            show: element.argv
+          };
         }
       }
     }
@@ -86,40 +97,49 @@ class Model {
     this.view.update(this.viewModel);
   }
 
+  changeThisView(view) {
+    this.thisView = view;
+  }
+
   getServerError() {}
 
   getText(text) {
-    this.question = text;
-    this.controller.sendQuestion(text);
-    console.log("get text from stt : " + text);
+    if (this.thisView == "standby-view") {
+      this.question = text;
+      this.controller.sendQuestion(text);
+      console.log("get text from stt : " + text);
+    } else {
+      this.question = text;
+      this.controller.sendAdditionalQuestion(this.answer, text);
+      console.log("get text from stt + Q : " + text);
+    }
   }
 
   updateSpeechAnimation() {
-    let temp = this.viewModel["standby-view"];
+    let temp = this.viewModel[this.thisView];
     temp.modified = true;
     temp = temp.data[0];
     temp.modified = true;
-    temp.arg = false;
+    temp.arg.show = false;
     this.updateView();
   }
   receiveResult(result) {
-    // this.answer = result;
-    // let temp = this.viewModel["overlay-view"];
-    // temp.modified = true;
-
-    // temp = temp.data[3];
-    // temp.modified = true;
-    // temp.arg = result;
+    this.answer = result;
+    let overlay = this.viewModel["overlay-view"];
+    overlay.modified = true;
+    overlay = overlay.data[3];
+    overlay.modified = true;
+    overlay.arg = { show: true, update: true, data: result };
 
     let mailbox = this.viewModel["standby-view"];
     mailbox.modified = true;
-
     mailbox = mailbox.data[3];
     mailbox.modified = true;
-    mailbox.arg = this.question;
+    mailbox.arg = { show: true, update: true, data: this.question };
 
     console.log("receive data form server : " + result);
 
+    this.thisView = "overlay-view";
     this.updateView();
   }
 }

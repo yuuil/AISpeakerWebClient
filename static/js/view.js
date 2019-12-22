@@ -6,7 +6,7 @@ class View {
   objectLinker(controller, views) {
     this.controller = controller;
     this.view["standby-view"] = views[0];
-    this.view["overlat-view"] = views[1];
+    this.view["overlay-view"] = views[1];
   }
 
   update(viewModel) {

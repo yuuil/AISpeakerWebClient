@@ -1,6 +1,6 @@
 class StandbyView {
   constructor() {
-    this.speakerCiecle = $(
+    this.speakerCircle = $(
       "#standby-view > #speaker-section > .speaker-circle"
     );
     this.coreVoice = $("#standby-core-voice");
@@ -60,14 +60,14 @@ class StandbyView {
     }
   }
 
-  startRecognition(show) {
-    if (show) {
+  startRecognition(arg) {
+    if (arg.show) {
       console.log("Speaker On");
       this.haloEffect
         .addClass("effect-halo-runnig")
         .removeClass("effect-halo-blink");
       this.voiceImage.addClass("fade-out").removeClass("fade-in");
-      this.speakerCiecle.addClass("on");
+      this.speakerCircle.addClass("on");
       this.siri.css({ display: "block" });
       siriWave.start();
       siriWave.setSpeed(0.1);
@@ -77,14 +77,14 @@ class StandbyView {
         .addClass("effect-halo-blink")
         .removeClass("effect-halo-runnig");
       this.voiceImage.addClass("fade-in").removeClass("fade-out");
-      this.speakerCiecle.removeClass("on");
+      this.speakerCircle.removeClass("on");
       this.siri.css({ display: "none" });
       siriWave.stop();
     }
   }
 
-  switchPlayAndPause(pause) {
-    if (pause) {
+  switchPlayAndPause(arg) {
+    if (arg.show) {
       this.playAndPause
         .attr("src", "static/img/round_play_circle_outline_white_48dp.png")
         .addClass("press-button");
@@ -110,7 +110,7 @@ class StandbyView {
 
   pressMailbox(arg) {
     this.mailbox.addClass("press-button");
-    this.mailbox.children("p").text(arg);
+    this.mailbox.children("p").text(arg.data);
     setTimeout(() => {
       this.mailbox.removeClass("press-button");
     }, 210);

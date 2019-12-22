@@ -209,7 +209,7 @@ div {
   box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
 }
 
-#overlay-modal #speaker-circle {
+#overlay-modal .speaker-circle {
   width: 80px;
   height: 80px;
 }
