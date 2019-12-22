@@ -3,6 +3,8 @@ $(function() {
   const overlayModal = $("#overlay-modal");
   const resultMailbox = $("#result-mailbox");
   const msgBox = $("#msgbox");
+  const speakerCircle = $("#overlay-modal > #speaker-circle");
+  const speakerIcon = $("#overlay-modal > #speaker-circle .control-icon");
   let overlayOn = false;
   resultMailbox.click(ClickedResultMailbox);
   overlayView.click(ClickedOverlayView);
@@ -15,8 +17,9 @@ $(function() {
   }
 
   function ClickedOverlayView(evt) {
-    if(!$(evt.target).is(overlayModal) && !$(evt.target).is(msgBox)) {
-      console.log(evt.target)
+    if(!$(evt.target).is(overlayModal) && !$(evt.target).is(msgBox)
+    && !$(evt.target).is(speakerCircle) && !$(evt.target).is(speakerIcon)) {
+      console.log(evt.target);
       overlayOn = false;
       overlayView.addClass("slide-down").removeClass("slide-up");
       overlayView.css({"opacity":"0", "pointer-events": "none"});
