@@ -22,10 +22,11 @@ class APIGateway {
       });
     this.model = model;
   }
-  send(question) {
+
+  sendQuestion(question) {
     if(this.serverUrl === undefined) {
       this.model.getServerError(500);
-    } else if(question) {
+    } else {
       $.ajax({
         type: "POST",
         url: "result",
@@ -40,6 +41,12 @@ class APIGateway {
           this.receive(res);
         }
       })
+    }
+  }
+
+  sendBibleMore() {
+    if(this.serverUrl === undefined) {
+      this.model.getServerError(500);
     } else {
       $.ajax({
         type: "POST",
@@ -57,6 +64,29 @@ class APIGateway {
       })
     }
   }
+
+  sendAdditionalQuestion(question, contents) {
+    if(this.serverUrl === undefined) {
+      this.model.getServerError(500);
+    } else {
+      $.ajax({
+        type: "POST",
+        url: "bible/qa",
+        dataType: "json",
+        data: {
+          question: question,
+          contents: contents
+        },
+        success: (res) => {
+          console.log(res);
+        },
+        error: (res) => {
+          console.log(res);
+        }
+      })
+    }
+  }
+
   receive(res) {
     console.log(res);
     console.log(res.responseText);
