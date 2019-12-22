@@ -73,6 +73,9 @@ class ChromeRecognition {
     this.recognition.onspeechend = () => {
       this.recognition.stop();
     };
+    this.recognition.onend = event => {
+      console.log(event);
+    };
   }
   start() {
     this.isCancel = false;

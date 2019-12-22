@@ -52,11 +52,13 @@ div {
 }
 
 .effect-halo {
-  cursor: pointer;
+  pointer-events: none;
   position: absolute;
+  cursor: pointer;
   left: 0;
   width: 100%;
   height: 100%;
+  opacity: 0.75;
   background-color: #f5cec7;
   border-radius: 50%;
 }
@@ -132,8 +134,11 @@ div {
 }
 
 .effect-halo-runnig {
-  pointer-events: none;
   animation: halo 1.6s infinite linear;
+}
+
+.effect-halo-blink {
+  animation: blinking 1.6s infinite linear;
 }
 
 #speaker-circle .effect-halo-runnig:nth-of-type(2) {
