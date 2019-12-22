@@ -1,32 +1,44 @@
-$(function() {
-  const overlayView = $("#overlay-view");
-  const overlayModal = $("#overlay-modal");
-  const resultMailbox = $("#result-mailbox");
-  const msgBox = $("#msgbox");
-  const speakerCircle = $("#overlay-modal > #speaker-circle");
-  const speakerIcon = $("#overlay-modal > #speaker-circle .control-icon");
-  let overlayOn = false;
-  resultMailbox.click(ClickedResultMailbox);
-  overlayView.click(ClickedOverlayView);
+class OverlayView {
+  constructor() {
+    this.overlayView = $("#overlay-view");
+    this.overlayModal = $("#overlay-modal");
+    this.resultBox = $("#overlay-modal > #msgbox");
+    this.speakerCircle = $("#overlay-modal > .speaker-circle");
+    this.speakerIcon = $("#overlay-modal > #icon-section");
 
-  function ClickedResultMailbox() {
-    console.log("clicked");
-    overlayOn = true;
-    overlayView.addClass("slide-up").removeClass("slide-down");
-    overlayView.css({ opacity: "1", "pointer-events": "auto" });
+    this.haloEffect = $("#overlay-modal > .speaker-circle > .effect-halo");
+
+    this.playAndPause = $(
+      "#overlay-modal > .speaker-circle > .icon-section > .control-icon"
+    ).first();
+    this.reset = $(
+      "#overlay-modal > .speaker-circle > .icon-section > .control-icon"
+    ).next();
+
+    this.showOverlayView = false;
   }
 
-  function ClickedOverlayView(evt) {
-    if (
-      !$(evt.target).is(overlayModal) &&
-      !$(evt.target).is(msgBox) &&
-      !$(evt.target).is(speakerCircle) &&
-      !$(evt.target).is(speakerIcon)
-    ) {
-      console.log(evt.target);
-      overlayOn = false;
-      overlayView.addClass("slide-down").removeClass("slide-up");
-      overlayView.css({ opacity: "0", "pointer-events": "none" });
+  objectLinker(view) {
+    this.view = view;
+    this.controller = view.controller;
+    this.addEventHandler();
+  }
+  addEventHandler() {
+    this.overlayView.click();
+  }
+
+  ClickedResultMailbox() {
+    console.log("clicked");
+    this.showOverlayView = true;
+    this.overlayView.addClass("slide-up").removeClass("slide-down");
+    this.overlayView.css({ opacity: "1", "pointer-events": "auto" });
+  }
+
+  ClickedOverlayView(evt) {
+    if (evt.target.id === "overlay-view") {
+      this.showOverlayView = false;
+      this.overlayView.addClass("slide-down").removeClass("slide-up");
+      this.overlayView.css({ opacity: "0", "pointer-events": "none" });
     }
   }
-});
+}

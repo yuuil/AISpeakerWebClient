@@ -12,7 +12,7 @@ $(document).ready(function() {
   view = new View();
   controller = new Controller();
   stanby = new StandbyView();
-  overlay;
+  overlay = new OverlayView();
   sttManager = new STTManger();
   ttsManager = new TTSModel();
   apiGateway = new APIGateway("bquad");
@@ -25,6 +25,7 @@ $(document).ready(function() {
   ttsManager.objectLinker(controller);
 
   stanby.objectLinker(view);
+  overlay.objectLinker(view);
 
   //controller.ReadFirstTimeOnLoad();
 });

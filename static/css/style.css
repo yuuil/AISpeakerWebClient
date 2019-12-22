@@ -42,7 +42,7 @@ div {
   position: relative;
 }
 
-#speaker-circle {
+.speaker-circle {
   position: relative;
   display: flex;
   align-items: center;

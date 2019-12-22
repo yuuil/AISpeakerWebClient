@@ -1,14 +1,20 @@
 class StandbyView {
   constructor() {
-    this.speakerCiecle = $("#speaker-circle");
+    this.speakerCiecle = $(
+      "#standby-view > #speaker-section > .speaker-circle"
+    );
     this.coreVoice = $("#standby-core-voice");
     this.voiceImage = $("#standby-core-img");
     this.mailbox = $("#result-mailbox");
     this.haloEffect = $(
-      "#standby-view > #speaker-section > #speaker-circle > .effect-halo"
+      "#standby-view > #speaker-section > .speaker-circle > .effect-halo"
     );
-    this.playAndPause = $(".control-icon").first();
-    this.reset = $(".control-icon").next();
+    this.playAndPause = $(
+      "#standby-view > #speaker-section > .speaker-circle >  .icon-section > .control-icon"
+    ).first();
+    this.reset = $(
+      "#standby-view > #speaker-section > .speaker-circle > .icon-section > .control-icon"
+    ).next();
 
     this.siri = $("#siri-wave");
     $("#siri-wave > canvas").css({ width: "100%" });
