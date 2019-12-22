@@ -15,7 +15,7 @@ $(document).ready(function() {
   overlay;
   sttManager = new STTManger();
   ttsManager = new TTSModel();
-  apiGateway = new APIGateway("서버이름");
+  apiGateway = new APIGateway("bquad");
 
   model.objectLinker(view, controller);
   controller.objectLinker(model, sttManager, ttsManager, apiGateway);
