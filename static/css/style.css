@@ -230,6 +230,7 @@ div {
 }
 
 #msgbox {
+  display: block;
   width: 600px;
   height: 75vh;
   margin: -35px auto 0;
